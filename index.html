@@ -1,18 +1,48 @@
-<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Casamento - Tiago e Duda (10 de junho de 2023)</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <main>
+        <header><h1>Lista de Casamento - Tiago e Duda (10 de junho de 2023)</h1></header>
 
-<script>
-    var listaCasamentoUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLBoYlfL4v6aYo8ED-C52txXB63mk26SHeKLQniguPH0477Ht37Oh34geGqfdFaZma7Iz7NQNC2K2N/pubhtml?gid=1943412430&single=true"
-    var onSuccess = (data) => {
-        var pageDoc = $($.parseHTML(data));
-        lines = pageDoc.find('table tbody tr')
-        lines.each((index, tr)=> {
-            if(index > 0) {
-                console.log(tr)
-            }
-        })
-    }
+        <section>
+            <h2>Veja abaixo os itens que estão disponíveis para nos presentar:</h2>
+            <ul id="mariage-gifts-list"></ul>
+        </section>
+    </main>
 
-    $.get(listaCasamentoUrl, onSuccess)
-</script>
+    <script>
+        var listaCasamentoUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLBoYlfL4v6aYo8ED-C52txXB63mk26SHeKLQniguPH0477Ht37Oh34geGqfdFaZma7Iz7NQNC2K2N/pubhtml?gid=1943412430&single=true"
+        var itensListaCasamento = []
+        var showListFromSheet = ()=> {
+            var mariageGiftsList = document.getElementById('mariage-gifts-list');
+            mariageGiftsList.textContent = '';
+            itensListaCasamento.forEach(gift=> {
+                var giftHtmlItem = document.createElement('li');
+                giftHtmlItem.innerText = gift;
+                mariageGiftsList.appendChild(giftHtmlItem)
+            });
+        }
+        var onSuccess = (data) => {
+            var pageDoc = $($.parseHTML(data));
+            lines = pageDoc.find('table tbody tr td')
+            lines.each((index, cell)=> {
+                if(index > 0) {
+                    itensListaCasamento.push(cell.innerText)
+                }
+            });
+            showListFromSheet();
+        }
+
+        $.get(listaCasamentoUrl, onSuccess)
+    </script>
+</body>
+</html>
