@@ -41,7 +41,7 @@
             var pageDoc = $($.parseHTML(data));
             lines = pageDoc.find('table tbody tr td')
             lines.each((index, cell)=> {
-                if(index > 0 && !cell.innerText.includes('Total geral')) {
+                if(index > 0 && cell.innerText.length > 0 && !cell.innerText.includes('Total geral')) {
                     itensListaCasamento.push(cell.innerText)
                 }
             });
@@ -91,7 +91,12 @@
         }
         li{
             list-style: none;
-            font-size: 1.6rem;            
+            font-size: 1.4rem;
+            border-bottom: 1px solid #808080;
+            padding: 0.5rem;            
+        }
+        li:last-of-type {
+            border: none;
         }
         ul{
             padding: 0;
