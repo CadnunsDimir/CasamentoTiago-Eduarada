@@ -53,8 +53,8 @@
     <style>
         @import url('https://fonts.cdnfonts.com/css/freebooter-script');
         body{
-            font-family: Arial, Helvetica, sans-serif;
-            font-family: 'Freebooter Script', sans-serif;
+            font-family:  'Arial Narrow Bold', sans-serif;
+            /* font-family: 'Freebooter Script', sans-serif; */
             background-color: rgb(147, 185, 255);
         }
 
@@ -76,7 +76,8 @@
         }
 
         .content-title{
-            font-size: 1.8rem;
+            font-size: 3rem;
+            font-family: 'Freebooter Script', sans-serif;
         }
 
         .flower-img{
@@ -94,6 +95,19 @@
         }
         ul{
             padding: 0;
+        }
+
+        @media only screen and (min-width: 450px) {
+            .flower-img{
+                z-index: -1;
+            }
+            main{
+                background-color: rgba(147, 185, 255, 0.8);
+                box-shadow: 0px 2px 4px 0px rgb(44 44 44);
+                border-radius: 11px;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
         }
     </style>
 </body>
