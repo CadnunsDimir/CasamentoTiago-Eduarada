@@ -58,7 +58,7 @@
             mariageGiftsList.forEach((value)=> {
                 var hasSearch = target.value.length > 0;
                 if(hasSearch){
-                    var hasValue = value.textContent.includes(target.innerText);
+                    var hasValue = value.textContent.includes(target.value);
                     value.style.display = hasValue ? 'block' :'none';
                 }else {
                     value.style.display = 'block';
