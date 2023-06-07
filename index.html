@@ -56,7 +56,7 @@
 
             var mariageGiftsList = document.querySelectorAll('#mariage-gifts-list li');
             mariageGiftsList.forEach((value)=> {
-                var hasSearch = target.innerText.length > 0;
+                var hasSearch = target.value.length > 0;
                 if(hasSearch){
                     var hasValue = value.textContent.includes(target.innerText);
                     value.style.display = hasValue ? 'block' :'none';
