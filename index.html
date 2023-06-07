@@ -18,7 +18,7 @@
 
         <section>
             <h2>Veja abaixo os itens que estão disponíveis para os que desejarem, nos presentar:</h2>
-            <input type="text" id="buscar-presente" placeholder="pesquisar" onkeypress="onKeyPress">
+            <input type="text" id="buscar-presente" placeholder="pesquisar" onkeypress="onKeyPress()">
             <ul id="mariage-gifts-list">
             </ul>
         </section>
@@ -50,9 +50,9 @@
         }
 
         $.get(listaCasamentoUrl, onSuccess);
-        function onKeyPress(event) {
+        function onKeyPress(event) {            
+            var target = this.target;
             console.log('onKeyPres', target);
-            var target = event.target;
 
             var mariageGiftsList = document.querySelectorAll('#mariage-gifts-list li');
             mariageGiftsList.forEach((value)=> {
